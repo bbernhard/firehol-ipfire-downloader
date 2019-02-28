@@ -1,6 +1,6 @@
 Simple python script that downloads and applies the [firehol level 1 blacklist](https://iplists.firehol.org/files/firehol_level1.netset) on an ipfire machine.
 
-The script applies every CIDR inside the firehol blacklist, except 192.168.0.0/16 and 127.0.0.0/8 (to prevent us from locking ourselves out of our own ipfire machine).
+The script applies every CIDR inside the firehol blacklist, except `192.168.0.0/16` and `127.0.0.0/8` (to prevent us from locking ourselves out of our own ipfire machine).
 
 # Howto install
 
