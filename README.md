@@ -2,7 +2,7 @@ Simple python script that downloads and applies the [firehol level 1 blacklist](
 
 The script applies every CIDR inside the firehol blacklist, except 192.168.0.0/16 and 127.0.0.0/8 (to prevent us from locking ourselves out of our own ipfire machine).
 
-#Howto install
+# Howto install
 
 * download the `firehol-downloader.py` script to the `/usr/bin/` folder on your ipfire machine
 * make the script executable with `chmod u+rx /usr/bin/firehol-downloader.py`
