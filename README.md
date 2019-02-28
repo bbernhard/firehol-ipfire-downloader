@@ -18,39 +18,39 @@ Add the following lines to the `start` condition of your `firewall.local` file:
 Add the following lines to the `stop`condition your `firewall.local` file:
 ```
     /sbin/iptables -F CUSTOMFORWARD
-/sbin/iptables -F CUSTOMINPUT
-/sbin/iptables -F CUSTOMOUTPUT
+    /sbin/iptables -F CUSTOMINPUT
+    /sbin/iptables -F CUSTOMOUTPUT
 ```
 
 The resulting `/etc/sysconfig/firewall.local` file should now look similar to this one: 
 
 ```
-#!/bin/sh
-# Used for private firewall rules
+    #!/bin/sh
+    # Used for private firewall rules
 
-# See how we were called.
-case "$1" in
-  start)
+    # See how we were called.
+    case "$1" in
+      start)
         ## add your 'start' rules here
         /sbin/iptables -I CUSTOMFORWARD -m set --match-set firehol dst -j REJECT
         /sbin/iptables -I CUSTOMINPUT -m set --match-set firehol src -j REJECT
         /sbin/iptables -I CUSTOMOUTPUT -m set --match-set firehol dst -j REJECT
         ;;
-  stop)
+      stop)
         ## add your 'stop' rules here
         /sbin/iptables -F CUSTOMFORWARD
         /sbin/iptables -F CUSTOMINPUT
         /sbin/iptables -F CUSTOMOUTPUT
         ;;
-  reload)
+      reload)
         $0 stop
         $0 start
         ## add your 'reload' rules here
         ;;
-  *)
+      *)
         echo "Usage: $0 {start|stop|reload}"
         ;;
-esac
+    esac
 ```
 
 * create a new cronjob entry with `fcrontab -e` which calls the `firehol-downloader.py` script periodically. 
