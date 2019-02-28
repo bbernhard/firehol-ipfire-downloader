@@ -10,14 +10,14 @@ The script applies every CIDR inside the firehol blacklist, except 192.168.0.0/1
 * connect via SSH to your ipfire machine and modify `/etc/sysconfig/firewall.local`. 
 Add the following lines to the `start` condition of your `firewall.local` file:
 ```
-/sbin/iptables -I CUSTOMFORWARD -m set --match-set firehol dst -j REJECT
-/sbin/iptables -I CUSTOMINPUT -m set --match-set firehol src -j REJECT
-/sbin/iptables -I CUSTOMOUTPUT -m set --match-set firehol dst -j REJECT
+    /sbin/iptables -I CUSTOMFORWARD -m set --match-set firehol dst -j REJECT
+    /sbin/iptables -I CUSTOMINPUT -m set --match-set firehol src -j REJECT
+    /sbin/iptables -I CUSTOMOUTPUT -m set --match-set firehol dst -j REJECT
 ```
 
 Add the following lines to the `stop`condition your `firewall.local` file:
 ```
-/sbin/iptables -F CUSTOMFORWARD
+    /sbin/iptables -F CUSTOMFORWARD
 /sbin/iptables -F CUSTOMINPUT
 /sbin/iptables -F CUSTOMOUTPUT
 ```
