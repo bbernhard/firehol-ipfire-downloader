@@ -1,10 +1,11 @@
 import shutil
-import urllib2
 import subprocess
 import shlex
 import sys
 import logging
 import os
+from urllib.request import urlopen
+from urllib.request import Request
 
 if __name__ == "__main__":
 	log_file = "/tmp/firehol.log"
@@ -27,11 +28,11 @@ if __name__ == "__main__":
        			 'Accept-Language': 'en-US,en;q=0.8',
        			 'Connection': 'keep-alive'}
 	url = 'https://iplists.firehol.org/files/firehol_level1.netset'  
-	req = urllib2.Request(url, headers=hdr)
+	req = Request(url, headers=hdr)
 	
 	data = None
 	try:
-		data = urllib2.urlopen(req)  
+		data = urlopen(req)
 	except:
 		logger.error("Couldn't download firehol data...exiting")
 		sys.exit(1)
