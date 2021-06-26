@@ -56,4 +56,4 @@ The resulting `/etc/sysconfig/firewall.local` file should now look similar to th
 * create a new cronjob entry with `fcrontab -e` which calls the `firehol-downloader.py` script periodically. 
   If you want to check for new firehol blacklists once per day, add the following entry: 
   
-  `0 1 * * * python /usr/bin/firehol-downloader.py`
+  `0 1 * * * python3 /usr/bin/firehol-downloader.py`
